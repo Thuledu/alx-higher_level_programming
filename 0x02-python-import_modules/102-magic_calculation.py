@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from magic_calculation import add, sub, mul, div
+from calculator_1 import add, sub, mul
 
 def magic_calculation(a, b):
     if a > b:
