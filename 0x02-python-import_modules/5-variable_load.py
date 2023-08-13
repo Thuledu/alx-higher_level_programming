@@ -1,4 +1,8 @@
 #!/usr/bin/python3
-import variable_load_5
+from variable_load_5 import a
 
-print(variable_load_5.a)
+def find_the_variable():
+    print(a)
+
+if __name__ == "__main__":
+    find_the_variable()
