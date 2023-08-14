@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 def no_c(my_string):
-	new_string = ''.join([char for char in my_string if char.lower() != 'c'])
-	return new_string
+	translation_table = str.maketrans('', '', 'cC')
+	return my_string.translate(translation_table)
