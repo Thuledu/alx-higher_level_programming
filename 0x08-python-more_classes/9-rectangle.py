@@ -2,26 +2,26 @@
 class Rectangle:
     """
     Represents a rectangle.
-
-    This class provides a blueprint for creating rectangle objects.
     """
+
+    number_of_instances = 0
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """
-        Initializes a rectangle object with optional width and height.
-
+        Initializes a new instance of the Rectangle class.
         Args:
-            width (int): The width of the rectangle (default is 0).
-            height (int): The height of the rectangle (default is 0).
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
         """
         Retrieves the width of the rectangle.
-
         Returns:
             int: The width of the rectangle.
         """
@@ -31,10 +31,8 @@ class Rectangle:
     def width(self, value):
         """
         Sets the width of the rectangle.
-
         Args:
-            value (int): The width value to set.
-
+            value (int): The width of the rectangle.
         Raises:
             TypeError: If the width is not an integer.
             ValueError: If the width is less than 0.
@@ -49,7 +47,6 @@ class Rectangle:
     def height(self):
         """
         Retrieves the height of the rectangle.
-
         Returns:
             int: The height of the rectangle.
         """
@@ -59,10 +56,8 @@ class Rectangle:
     def height(self, value):
         """
         Sets the height of the rectangle.
-
         Args:
-            value (int): The height value to set.
-
+            value (int): The height of the rectangle.
         Raises:
             TypeError: If the height is not an integer.
             ValueError: If the height is less than 0.
@@ -75,8 +70,7 @@ class Rectangle:
 
     def area(self):
         """
-        Calculates and returns the area of the rectangle.
-
+        Calculates the area of the rectangle.
         Returns:
             int: The area of the rectangle.
         """
@@ -84,8 +78,7 @@ class Rectangle:
 
     def perimeter(self):
         """
-        Calculates and returns the perimeter of the rectangle.
-
+        Calculates the perimeter of the rectangle.
         Returns:
             int: The perimeter of the rectangle.
         """
@@ -96,23 +89,61 @@ class Rectangle:
     def __str__(self):
         """
         Returns a string representation of the rectangle.
-
         Returns:
-            str: A string representation of the rectangle.
+            str: The string representation of the rectangle.
         """
         if self.width == 0 or self.height == 0:
             return ""
-        rectangle_str = ""
+        rect_str = ""
         for _ in range(self.height):
-            rectangle_str += "#" * self.width + "\n"
-        return rectangle_str.strip()
+            rect_str += str(self.print_symbol) * self.width + '\n'
+        return rect_str.rstrip()
 
     def __repr__(self):
         """
-        Returns a string representation of the rectangle that can be used to recreate a new instance.
-
+        Returns a string representation of the rectangle to recreate a new instance.
         Returns:
-            str: A string representation of the rectangle.
+            str: The string representation of the rectangle.
         """
         return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+
+    def __del__(self):
+        """
+        Prints a message when an instance of Rectangle is deleted.
+        """
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        Returns the rectangle with the biggest area.
+        Args:
+            rect_1 (Rectangle): The first rectangle.
+            rect_2 (Rectangle): The second rectangle.
+        Raises:
+            TypeError: If rect_1 is not an instance of Rectangle.
+            TypeError: If rect_2 is not an instance of Rectangle.
+        Returns:
+            Rectangle: The rectangle with the biggest area.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """
+        Creates a new Rectangle instance with equal width and height.
+        Args:
+            size (int): The size of the square.
+        Returns:
+            Rectangle: A new Rectangle instance with equal width and height.
+        """
+        return cls(size, size)
 
