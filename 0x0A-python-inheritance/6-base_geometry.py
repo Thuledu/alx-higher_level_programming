@@ -2,9 +2,7 @@
 class BaseGeometry:
     """
     A base class representing geometry.
-
     This class can be used as a base class for defining different geometric shapes and operations.
-
     Example:
         >>> class Rectangle(BaseGeometry):
         ...     def __init__(self, width, height):
@@ -22,7 +20,6 @@ class BaseGeometry:
     def area(self):
         """
         Calculate the area of the geometry.
-
         Raises:
             Exception: This method is not implemented.
 
