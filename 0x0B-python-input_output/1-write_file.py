@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+write_file = __import__('1-write_file').write_file
+
 def write_file(filename="", text=""):
   """Writes a string to a text file (UTF8) and returns the number of characters written.
 
