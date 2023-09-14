@@ -15,25 +15,16 @@ class Square(Rectangle):
         ValueError: If the size is less than or equal to 0.
     """
 
-    def __init__(self, size):
-        self.__size = self.integer_validator("size", size)
-        super().__init__(self.__size, self.__size)
+	def __init__(self, size):
+		self.__size = self.integer_validator("size", size)
+		super().__init__(self.__size, self.__size)
+		self.__size = size
 
-    def __str__(self):
+	def __str__(self):
         """
         Return the string representation of the square.
 
         Returns:
             str: The square description.
         """
-        return "[Square] {}/{}".format(self.__size, self.__size)
-
-    def __repr__(self):
-        """
-        Return the string representation of the square.
-
-        Returns:
-            str: The square description.
-        """
-        return self.__str__()
-
+		return "[Square] {}/{}".format(self.__size, self.__size)

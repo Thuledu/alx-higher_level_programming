@@ -7,7 +7,7 @@ class MyInt(int):
 
     """
 
-    def __eq__(self, other):
+	def __eq__(self, other):
         """
         Override the == operator to invert the behavior.
 
@@ -17,9 +17,9 @@ class MyInt(int):
         Returns:
             bool: True if the values are not equal, False otherwise.
         """
-        return super().__ne__(other)
+		return int(self) != int(other)
 
-    def __ne__(self, other):
+	def __ne__(self, other):
         """
         Override the != operator to invert the behavior.
 
@@ -29,5 +29,4 @@ class MyInt(int):
         Returns:
             bool: True if the values are equal, False otherwise.
         """
-        return super().__eq__(other)
-
+		return int(self) == int(other)

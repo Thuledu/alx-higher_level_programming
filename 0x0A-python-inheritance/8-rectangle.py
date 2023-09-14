@@ -17,16 +17,8 @@ class Rectangle(BaseGeometry):
         ValueError: If the width or height is less than or equal to 0.
     """
 
-    def __init__(self, width, height):
-        self.__width = self.integer_validator("width", width)
-        self.__height = self.integer_validator("height", height)
-
-    def area(self):
-        """
-        Calculate the area of the rectangle.
-
-        Returns:
-            int: The area of the rectangle.
-        """
-        return self.__width * self.__height
-
+	def __init__(self, width, height):
+		self.__width = self.integer_validator("width", width)
+		self.__width = width
+		self.__height = self.integer_validator("height", height)
+		self.__height = height

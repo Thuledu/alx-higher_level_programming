@@ -11,7 +11,6 @@ def add_attribute(obj, attr_name, attr_value):
     Raises:
         TypeError: If the attribute was not successfully added to the object.
     """
-    setattr(obj, attr_name, attr_value)
-    if not hasattr(obj, attr_name) or getattr(obj, attr_name) != attr_value:
-        raise TypeError("can't add new attribute")
-
+	if not hasattr(obj, attr_name) or getattr(obj, attr_name) != attr_value:
+		raise TypeError("can't add new attribute")
+	setattr(obj, attr_name, attr_value)

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-Square = __import__('10-square').Square
+Rectangle = __import__('9-rectangle').Rectangle
+
 
 class Square(Rectangle):
     """
@@ -16,24 +17,7 @@ class Square(Rectangle):
         ValueError: If the size is less than or equal to 0.
     """
 
-    def __init__(self, size):
-        super().__init__(size, size)
-
-    def __str__(self):
-        """
-        Return the string representation of the square.
-
-        Returns:
-            str: The square description.
-        """
-       return "[Square] {}/{}".format(self._Rectangle__width)
-
-    def __repr__(self):
-        """
-        Return the string representation of the square.
-
-        Returns:
-            str: The square description.
-        """
-        return self.__str__()
-
+	def __init__(self, size):
+		super().__init__(size, size)
+		self.integer_validator("size", size)
+		self.__size = size
