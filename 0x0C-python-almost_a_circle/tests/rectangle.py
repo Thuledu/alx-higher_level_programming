@@ -69,3 +69,7 @@ class Rectangle:
 
 class Base:
     pass
+
+
+if __name__ == "__main__":
+    unittest.main()
