@@ -19,7 +19,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         if value <= 0:
-            raise ValueError("Width must be greater than 0")
+            raise ValueError("The Width must be greater than 0")
         self.__width = value
 
     @property
@@ -29,7 +29,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         if value <= 0:
-            raise ValueError("Height must be greater than 0")
+            raise ValueError("The Height must be greater than 0")
         self.__height = value
 
     @property
@@ -39,7 +39,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         if value < 0:
-            raise ValueError("x-coordinate cannot be negative")
+            raise ValueError("The x-coordinate cannot be negative")
         self.__x = value
 
     @property
@@ -49,5 +49,41 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         if value < 0:
-            raise ValueError("y-coordinate cannot be negative")
+            raise ValueError("The y-coordinate cannot be negative")
         self.__y = value
+
+    def area(self):
+        return self.height * self.width
+
+    def display(self):
+        rectangle = ""
+        print("\n" * self.y, end="")
+
+        for _ in range(self.height):
+            rectangle += " " * self.x + "#" * self.width + "\n"
+
+        print(rectangle, end="")
+
+    def update(self, *args, **kwargs):
+        if len(args) == 0:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+            return
+
+        self.id = args[0]
+        self.width = args[1]
+        self.height = args[2]
+        self.x = args[3]
+        self.y = args[4]
+
+    def to_dictionary(self):
+        return {
+            'x': self.x,
+            'y': self.y,
+            'id': self.id,
+            'height': self.height,
+            'width': self.width
+        }
+
+    def __str__(self):
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
