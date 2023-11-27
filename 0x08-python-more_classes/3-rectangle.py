@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+#!/usr/bin/python3
+"""Defines a Rectangle class"""
+
+
 class Rectangle:
     """
     Rectangle class that defines a rectangle.
@@ -11,7 +15,7 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """
-        Initializes a Rectangle instance.
+        Initialize the rectangle's width and height.
 
         Args:
             width (int): Width of the rectangle. Defaults to 0.
@@ -101,21 +105,20 @@ class Rectangle:
         Returns a string representation of the rectangle.
 
         Returns:
-            str: The string representation of the rectangle.
+            str: A string of # characters representing the rectangle.
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        rectangle = ""
-        for _ in range(self.__height):
-            rectangle += "#" * self.__width + "\n"
-        return rectangle.rstrip()
+        rectangle = "#" * self.__width + "\n"
+        rectangle *= self.__height
+        return rectangle[:-1]
 
     def __repr__(self):
         """
-        Returns a string representation of the rectangle object.
+        Returns a formal string representation of the Rectangle.
 
         Returns:
-            str: The string representation of the rectangle object.
+            str: A string representation of the rectangle object.
         """
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
