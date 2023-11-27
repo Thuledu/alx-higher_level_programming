@@ -105,9 +105,7 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        rectangle = "#" * self.__width + "\n"
-        rectangle *= self.__height
-        return rectangle[:-1]
+        return "\n".join(["#" * self.__width] * self.__height)
 
     def __repr__(self):
         """
