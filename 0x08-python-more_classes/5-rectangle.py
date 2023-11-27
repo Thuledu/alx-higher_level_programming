@@ -7,10 +7,7 @@ class Rectangle:
     Attributes:
         width (int): Width of the rectangle.
         height (int): Height of the rectangle.
-        number_of_instances (int): Number of instances of Rectangle.
     """
-
-    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """
@@ -22,7 +19,6 @@ class Rectangle:
         """
         self.width = width
         self.height = height
-        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -109,7 +105,10 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width] * self.__height)
+        rectangle = ""
+        for _ in range(self.__height):
+            rectangle += "#" * self.__width + "\n"
+        return rectangle.rstrip()
 
     def __repr__(self):
         """
@@ -122,7 +121,7 @@ class Rectangle:
 
     def __del__(self):
         """
-        Prints a message when an instance of Rectangle is deleted and decrements the number of instances.
+        Prints a message when an instance of Rectangle is deleted.
         """
         print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+
