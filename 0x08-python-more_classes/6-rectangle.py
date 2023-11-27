@@ -118,7 +118,7 @@ class Rectangle:
         Returns:
             str: A string representation of the rectangle object.
         """
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
         """
