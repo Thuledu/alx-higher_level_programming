@@ -1,1 +1,55 @@
+# Import the add_integer function from the 0-add_integer module
 >>> add_integer = __import__('0-add_integer').add_integer
+
+# Test Case 1: Adding two zeros should return 0
+>>> add_integer(0, 0)
+Expected Output: 0
+
+# Test Case 2: Adding a positive integer and zero should return the positive integer
+>>> add_integer(15, 0)
+Expected Output: 15
+
+# Test Case 3: Adding zero and a positive integer should return the positive integer
+>>> add_integer(0, 15)
+Expected Output: 15
+
+# Test Case 4: Adding a positive and negative integer should return 0
+>>> add_integer(-2, 2)
+Expected Output: 0
+
+# Test Case 5: Adding a positive and negative integer (reversed order) should return 0
+>>> add_integer(2, -2)
+Expected Output: 0
+
+# Test Case 6: Adding a positive integer should return the integer plus the default value (98)
+>>> add_integer(2)
+Expected Output: 100
+
+# Test Case 7: Calling the function without any arguments should raise a TypeError
+>>> add_integer()
+Expected Output: TypeError: add_integer() missing 1 required positional argument: 'a'
+
+# Test Case 8: Adding two non-integer values should raise a TypeError
+>>> add_integer('a', 'b')
+Expected Output: TypeError: a must be an integer
+
+# Test Case 9: Adding a non-integer and an integer should raise a TypeError
+>>> add_integer('a', 42)
+Expected Output: TypeError: a must be an integer
+
+# Test Case 10: Adding a non-integer should raise a TypeError
+>>> add_integer('a')
+Expected Output: TypeError: a must be an integer
+
+# Test Case 11: Adding an integer and a non-integer should raise a TypeError
+>>> add_integer(42, 'b')
+Expected Output: TypeError: b must be an integer
+
+# Test Case 12: Adding float infinity and an integer should raise an OverflowError
+>>> add_integer(float('inf'), 0)
+Expected Output: OverflowError: cannot convert float infinity to integer
+
+# Test Case 13: Adding zero and float NaN should raise a ValueError
+>>> add_integer(0, float('nan'))
+Expected Output: ValueError: cannot convert float NaN to integer
+

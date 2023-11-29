@@ -1,5 +1,36 @@
-matrix_divided = __import__('2-matrix_divided').matrix_divided
-matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-print(matrix_divided(matrix, 3))
-    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+# Import the matrix_divided function
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Basic usage: Divide a matrix by a scalar
+Matrix: [[4, 5, 6], [1, 2, 3]
+Divisor: 3
+Expected Output: [[1.33, 1.67, 2.0], [0.33, 0.67, 1.0]]
+
+# Test Case: Non-integer/float inputs in the matrix
+Matrix: [['g', 'a', 's'], ['b', 5, 6]]
+Divisor: 5
+Expected Output: TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test Case: Dividing by zero
+Matrix: [[2, 4, 6], [8, 10, 12]]
+Divisor: 0
+Expected Output: ZeroDivisionError: division by zero
+
+# Test Case: Different list lengths in the matrix
+Matrix: [[1, 2, 3], [4, 5]]
+Divisor: 2
+Expected Output: TypeError: Each row of the matrix must have the same size
+
+# Test Case: Negative variables in the matrix
+Matrix: [[4, 5, -6], [1, 2, -3]]
+Divisor: 2
+Expected Output: [[2.0, 2.5, -3.0], [0.5, 1.0, -1.5]]
+
+# Test Case: Empty matrix
+Matrix: [[]]
+Divisor: 2
+Expected Output: [[]]
+
+# Test Case: No input provided
+Expected Output: TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 

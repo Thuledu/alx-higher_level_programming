@@ -1,5 +1,89 @@
-text_indentation = __import__('5-text_indentation').text_indentation
-text_indentation("Hello World")
-Hello World
-text_indentation("OK")
-OK
+# Import the text_indentation function
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test Case 1: Single sentence with a period
+Text: "Hello."
+Expected Output:
+Hello.
+<BLANKLINE>
+
+# Test Case 2: Multiple sentences with different punctuation
+Text: "Hello. World: Here I am!"
+Expected Output:
+Hello.
+<BLANKLINE>
+World:
+<BLANKLINE>
+Here I am!
+
+# Test Case 3: Long text with line breaks and indentation
+Text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
+Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
+Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. \
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum \
+rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo \
+stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
+cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
+beatiorem! Iam ruinas videres"
+Expected Output:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+<BLANKLINE>
+Si id dicis, vicimus.
+<BLANKLINE>
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+<BLANKLINE>
+Sin aliud quid voles, postea.
+<BLANKLINE>
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+<BLANKLINE>
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+# Test Case 4: Text with line breaks
+Text: "Hello\n\nWorld!"
+Expected Output:
+Hello
+<BLANKLINE>
+World!
+<BLANKLINE>
+
+# Test Case 5: Text with only punctuation marks
+Text: ",    ; ?"
+Expected Output:
+,
+<BLANKLINE>
+;
+<BLANKLINE>
+?
+
+# Test Case 6: Single word
+Text: "Development"
+Expected Output:
+Development
+
+# Test Case 7: Text is an integer
+Text: 5
+Expected Output: TypeError: text must be a string
+
+# Test Case 8: Empty text
+Expected Output:
+
+# Test Case 9: No text provided
+Expected Output: TypeError: text_indentation() missing 1 required positional argument: 'text'
+

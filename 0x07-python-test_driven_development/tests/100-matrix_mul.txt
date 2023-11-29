@@ -1,6 +1,59 @@
-matrix_mul = __import__('100-matrix_mul').matrix_mul
-matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
-print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+# Import the matrix_mul function
+>>> matrix_mul = __import__('matrix_mul').matrix_mul
 
-matrix_mul([[1, 2]], [[3, 4], [5, 6]])
-print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+# Test Case 1: Invalid type for m_a
+m_a: "Holberton"
+m_b: [[1, 2]]
+Expected Output: TypeError: m_a must be a list
+
+# Test Case 2: Invalid type for m_a (list of strings)
+m_a: ["Betty", "Hello"]
+m_b: [[1, 2]]
+Expected Output: TypeError: m_a must be a list of lists
+
+# Test Case 3: Invalid type for m_b (list of strings)
+m_a: [[1, 5]]
+m_b: ["Tammy", "Holberton"]
+Expected Output: TypeError: m_b must be a list of lists
+
+# Test Case 4: Empty m_a
+m_a: []
+m_b: [[8, 4]]
+Expected Output: ValueError: m_a can't be empty
+
+# Test Case 5: Empty row in m_b
+m_a: [[8, 4]]
+m_b: [[]]
+Expected Output: ValueError: m_b can't be empty
+
+# Test Case 6: m_a contains non-numeric values
+m_a: [[1, 5], ["Hello", 9]]
+m_b: [[8, 4], [2, 5]]
+Expected Output: TypeError: m_a should contain only integers or floats
+
+# Test Case 7: m_b contains non-numeric values
+m_a: [[8, 4], [2, 8]]
+m_b: [[1, 5], ["Holberton", 9]]
+Expected Output: TypeError: m_b should contain only integers or floats
+
+# Test Case 8: Rows in m_a have different sizes
+m_a: [[8, 4], [2]]
+m_b: [[1, 5], [4, 8]]
+Expected Output: TypeError: each row of m_a must be of the same size
+
+# Test Case 9: Rows in m_b have different sizes
+m_a: [[8, 4], [2, 7.0]]
+m_b: [[1], [4, 8]]
+Expected Output: TypeError: each row of m_b must be of the same size
+
+# Test Case 10: Incompatible matrix sizes for multiplication
+m_a: [[8, 4, 4], [2, 8, 2]]
+m_b: [[1, 5], [4, 8]]
+Expected Output: ValueError: m_a and m_b can't be multiplied
+
+# Test Case 11: Missing m_b argument
+Expected Output: TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+# Test Case 12: Missing both m_a and m_b arguments
+Expected Output: TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+

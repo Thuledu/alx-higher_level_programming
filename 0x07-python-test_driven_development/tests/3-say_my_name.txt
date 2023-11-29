@@ -1,11 +1,41 @@
-say_my_name = __import__('3-say_my_name').say_my_name
 
-say_my_name("John", "Smith")
-My name is John Smith
+>>> say_my_name = __import__('3-say_my_name').say_my_name
 
-say_my_name("Walter", "White")
-My name is Walter White
 
-say_my_name("Bob")
-My name is Bob
-TypeError: last_name must be a string
+# Test Case 1: Say the first name "Bob"
+First Name: "Bob"
+Expected Output: My name is Bob
+
+# Test Case 2: Say the full name "John Smith"
+First Name: "John"
+Last Name: "Smith"
+Expected Output: My name is John Smith
+
+# Test Case 3: Last name is None
+First Name: "Barry"
+Last Name: None
+Expected Output: TypeError: last_name must be a string
+
+# Test Case 4: First name is an integer
+First Name: 12
+Last Name: "White"
+Expected Output: TypeError: first_name must be a string
+
+# Test Case 5: Both first name and last name are integers
+First Name: 1
+Last Name: 2
+Expected Output: TypeError: first_name must be a string
+
+# Test Case 6: "Holberton" first name with empty last name
+First Name: "Holberton"
+Last Name: ""
+Expected Output: My name is Holberton
+
+# Test Case 7: Empty first name and last name
+First Name: ""
+Last Name: ""
+Expected Output: My name is  
+
+# Test Case 8: No arguments provided
+Expected Output: TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
