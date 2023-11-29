@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+
 def magic_string():
-    n = 1
-    while True:
-        yield "BestSchool" * n
-        n += 1
+    s = "BestSchool"
+    for i in range(len(s)):
+        s += ", " + s
+        return s
