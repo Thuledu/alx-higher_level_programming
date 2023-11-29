@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 class LockedClass:
-    def __setattr__(self, name, value):
-        if name != 'first_name':
-            raise AttributeError('Cannot set attribute')
-        super().__setattr__(name, value)
+    slots = ["first_name"]
+    def __init__(self, first_name=""):
+        self.first_name = first_name
