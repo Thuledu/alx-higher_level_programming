@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def magic_string():
-    s = "BestSchool"
-    for i in range(len(s)):
-        s += ", " + s
-        return s
+    if not hasattr(magic_string, 'counter'):
+        magic_string.counter = 0
+        magic_string.counter += 1
+        return "BestSchool, " * (magic_string.counter - 1) + "BestSchool"
