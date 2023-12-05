@@ -1,31 +1,45 @@
 #!/usr/bin/python3
+"""A class Student that defines a student."""
+
 class Student:
+    """
+    Class that defines a student.
+    """
+
     def __init__(self, first_name, last_name, age):
+        """
+        Initializes a Student instance with first_name, last_name, and age.
+
+        Args:
+        - first_name: The first name of the student.
+        - last_name: The last name of the student.
+        - age: The age of the student.
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
-    
+
     def to_json(self, attrs=None):
-        description = {}
-        
-        # Get all the attributes of the object
-        attributes = self.__dict__
+        """
+        Retrieves a dictionary representation of a Student instance.
 
-        # If attrs is provided and is a list of attribute names
-        if attrs and isinstance(attrs, list):
-            for attr in attrs:
-                if attr in attributes and isinstance(attributes[attr], (list, dict, str, int, bool)):
-                    description[attr] = attributes[attr]
+        Args:
+        - attrs: A list of strings containing attribute names. If provided, only the specified attributes are retrieved.
+
+        Returns:
+        - A dictionary representing the Student instance with the specified attributes.
+        """
+        if attrs is not None and all(isinstance(attr, str) for attr in attrs):
+            return {key: value for key, value in self.__dict__.items() if key in attrs}
         else:
-            # If attrs is not provided or is not a list, retrieve all attributes
-            for attr, value in attributes.items():
-                if isinstance(value, (list, dict, str, int, bool)):
-                    description[attr] = value
-        
-        return description
-    
-    def reload_from_json(self, json):
-        # Replace all attributes of the Student instance based on the given dictionary representation
-        for attr, value in json.items():
-            setattr(self, attr, value)
+            return self.__dict__
 
+    def reload_from_json(self, json):
+        """
+        Replaces all attributes of the Student instance with the attributes from the provided dictionary.
+
+        Args:
+        - json: A dictionary where the keys are the public attribute names and the values are the corresponding attribute values.
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
