@@ -6,5 +6,8 @@ def read_file(filename=""):
   Args:
     filename: The name of the file to read.
   """
-	with open(filename, "r", encoding="utf-8") as f:
-		print(f.read())
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            print(file.read(), end="")
+    except FileNotFoundError:
+        pass
