@@ -2,18 +2,41 @@
 """A script that adds all arguments to a Python list, and then save them to a file."""
 
 import sys
-from 5-save_to_json_file import save_to_json_file
-from 6-load_from_json_file import load_from_json_file
+import json
+from os import path
+from typing import List
 
-def main():
-    args = sys.argv[1:]
-    try:
-        existing_data = load_from_json_file("add_item.json")
-    except FileNotFoundError:
-        existing_data = []
+def save_to_json_file(my_obj, filename):
+    """
+    Saves the given object to a file in JSON format.
 
-    updated_data = existing_data + args
-    save_to_json_file(updated_data, "add_item.json")
+    Args:
+    - my_obj: The object to be saved.
+    - filename: The name of the file to save the object to.
+    """
+    with open(filename, 'w') as file:
+        json.dump(my_obj, file)
 
-if __name__ == "__main__":
-    main()
+def load_from_json_file(filename):
+    """
+    Loads an object from a file in JSON format.
+
+    Args:
+    - filename: The name of the file to load the object from.
+
+    Returns:
+    - The object loaded from the file.
+    """
+    with open(filename, 'r') as file:
+        return json.load(file)
+
+args = sys.argv[1:]
+filename = 'add_item.json'
+
+if path.exists(filename):
+    data = load_from_json_file(filename)
+else:
+    data = []
+
+data.extend(args)
+save_to_json_file(data, filename)
