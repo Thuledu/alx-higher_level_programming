@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """A cript that reads stdin line by line and computes metrics."""
 
+import sys
+
 def print_statistics(total_size, status_codes):
     """
     Prints the statistics based on the total file size and the number of lines for each status code.
@@ -18,10 +20,8 @@ def print_statistics(total_size, status_codes):
 if __name__ == "__main__":
     import sys
 
-    count = 0
     total_size = 0
-    status_codes = {}
-    valid_codes = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
+    status_codes = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
 
     try:
         for i, line in enumerate(sys.stdin, 1):
