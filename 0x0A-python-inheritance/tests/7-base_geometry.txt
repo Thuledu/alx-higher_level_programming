@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+#Test case 0: Testing that the integer_validator is an instance method
+>>> type(BaseGeometry.__dict__['integer_validator'])
+<class 'function'>
 
 # Test case 1: Testing the area() method with the BaseGeometry class
 >>> shape = BaseGeometry()
@@ -26,3 +30,8 @@ Traceback (most recent call last):
 ...
 TypeError: height must be an integer
 
+#Test case 5: Testing the integer_validator method with value 0
+>>> bg.integer_validator("key", 0)
+Traceback (most recent call last):
+...
+ValueError: key must be greater than 0
