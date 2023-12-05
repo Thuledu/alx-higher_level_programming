@@ -1,43 +1,37 @@
 #!/usr/bin/python3
+"""A cript that reads stdin line by line and computes metrics."""
+
 import sys
-import random
-from time import sleep
-import datetime
 
-def compute_metrics():
-    total_file_size = 0
-    status_code_counts = {}
+def print_statistics(total_size, status_codes):
+    """
+    Prints the statistics based on the total file size and the number of lines for each status code.
 
-    try:
-        line_count = 0
-        for line in sys.stdin:
-            line_count += 1
-            
-            # Parse the line
-            parts = line.strip().split()
-            file_size = int(parts[-1])
+    Args:
+    - total_size: The total file size.
+    - status_codes: A dictionary containing the number of lines for each status code.
+    """
+    print("File size: {}".format(total_size))
+    for code in sorted(status_codes.keys()):
+        print("{}: {}".format(code, status_codes[code]))
+
+total_size = 0
+status_codes = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
+
+try:
+    for i, line in enumerate(sys.stdin, 1):
+        try:
+            parts = line.split()
+            total_size += int(parts[-1])
             status_code = parts[-2]
-            
-            # Increment the total file size
-            total_file_size += file_size
-            
-            # Increment the count for the status code
-            if status_code in status_code_counts:
-                status_code_counts[status_code] += 1
-            else:
-                status_code_counts[status_code] = 1
-            
-            # Print statistics every 10 lines
-            if line_count % 10 == 0:
-                print("Total file size:", total_file_size)
-                for code in sorted(status_code_counts):
-                    print(code + ":", status_code_counts[code])
-                print()
-    except KeyboardInterrupt:
-        # Print final statistics after keyboard interruption
-        print("Total file size:", total_file_size)
-        for code in sorted(status_code_counts):
-            print(code + ":", status_code_counts[code])
+            if status_code in status_codes:
+                status_codes[status_code] += 1
+        except Exception:
+            pass
 
-compute_metrics()
+        if i % 10 == 0:
+            print_statistics(total_size, status_codes)
 
+except KeyboardInterrupt:
+    print_statistics(total_size, status_codes)
+    raise
