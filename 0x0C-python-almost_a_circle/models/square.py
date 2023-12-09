@@ -1,60 +1,58 @@
 #!/usr/bin/python3
 
+# models/square.py
+"""
+Square module
+"""
+
 from models.rectangle import Rectangle
 
 class Square(Rectangle):
-    """Represent a square."""
-
+    """
+    Square class that inherits from Rectangle
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        """Initialize a new Square."""
+        """
+        Constructor for Square class
+        Args:
+            size (int): size of the square
+            x (int): x-coordinate of the square
+            y (int): y-coordinate of the square
+            id (int): id of the square
+        """
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        """Get/set the size of the Square."""
+        """
+        Getter for size attribute
+        Returns:
+            int: size of the square
+        """
         return self.width
 
     @size.setter
     def size(self, value):
+        """
+        Setter for size attribute
+        Args:
+            value (int): size of the square
+        """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
-        """Update the Square."""
-        attribute_mapping = {
-            0: "id",
-            1: "x",
-            2: "y",
-            3: "size"
-        }
-
+        """
+        Update the Square attributes based on the given arguments
+        Args:
+            *args: no-keyword arguments in the order (id, size, x, y)
+            **kwargs: key-worded arguments
+        """
         if args:
-            for i, arg in enumerate(args):
-                attribute = attribute_mapping.get(i)
-                if attribute is not None:
-                    if attribute == "id" and arg is None:
-                        self.__init__(self.x, self.y, self.size)
-                    else:
-                        setattr(self, attribute, arg)
+            attrs = ['id', 'size', 'x', 'y']
+            for i in range(len(args)):
+                setattr(self, attrs[i], args[i])
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
-        elif kwargs:
-            for k, v in kwargs.items():
-                attribute = attribute_mapping.get(k)
-                if attribute is not None:
-                    if attribute == "id" and v is None:
-                        self.__init__(self.x, self.y, self.size)
-                    else:
-                        setattr(self, attribute, v)
-
-    def to_dictionary(self):
-        """Return the dictionary representation of the Square."""
-        return {
-            "id": self.id,
-            "x": self.x,
-            "y": self.y,
-            "size": self.width
-        }
-
-    def __str__(self):
-        """Return the print() and str() representation of a Square."""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
