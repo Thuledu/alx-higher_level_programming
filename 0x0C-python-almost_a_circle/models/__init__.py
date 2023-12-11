@@ -6,4 +6,3 @@ models package
 """
 
 # Empty file
-

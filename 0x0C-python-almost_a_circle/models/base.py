@@ -5,21 +5,41 @@
 Base module
 """
 
+import turtle
+
 class Base:
     """
-    Base class for managing id attribute in future classes
+    Base class for other classes
     """
-    __nb_objects = 0  # private class attribute
-
-    def __init__(self, id=None):
+    @staticmethod
+    def draw(list_rectangles, list_squares):
         """
-        Constructor for Base class
+        Opens a window and draws all the Rectangles and Squares using Turtle graphics
         Args:
-            id (int): if not None, assign the public instance attribute id with this argument value,
-                      otherwise, increment __nb_objects and assign the new value to the public instance attribute id
+            list_rectangles (list): list of Rectangle instances
+            list_squares (list): list of Square instances
         """
-        if id is not None:
-            self.id = id
-        else:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+        screen = turtle.Screen()
+        screen.title("Shapes Drawing")
+
+        for rect in list_rectangles:
+            t = turtle.Turtle()
+            t.penup()
+            t.setpos(rect.x, rect.y)
+            t.pendown()
+            for _ in range(2):
+                t.forward(rect.width)
+                t.left(90)
+                t.forward(rect.height)
+                t.left(90)
+
+        for square in list_squares:
+            t = turtle.Turtle()
+            t.penup()
+            t.setpos(square.x, square.y)
+            t.pendown()
+            for _ in range(4):
+                t.forward(square.size)
+                t.left(90)
+
+        turtle.done()
