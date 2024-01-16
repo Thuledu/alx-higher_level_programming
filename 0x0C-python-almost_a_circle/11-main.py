@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-""" 11-main """
+
+# 11-main.py
+"""
+Main script to demonstrate the usage of Square class with update method
+"""
+
 from models.square import Square
 
 if __name__ == "__main__":
-
     s1 = Square(5)
     print(s1)
 

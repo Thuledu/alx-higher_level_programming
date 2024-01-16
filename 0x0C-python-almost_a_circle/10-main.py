@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-""" 10-main """
+
+# 10-main.py
+"""
+Main script to demonstrate the usage of Square class with getter and setter for size
+"""
+
 from models.square import Square
 
 if __name__ == "__main__":
-
     s1 = Square(5)
     print(s1)
     print(s1.size)
@@ -14,4 +18,3 @@ if __name__ == "__main__":
         s1.size = "9"
     except Exception as e:
         print("[{}] {}".format(e.__class__.__name__, e))
-

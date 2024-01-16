@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-""" 3-main """
+
+# 3-main.py
+"""
+Main script to demonstrate the usage of Rectangle class with area method
+"""
+
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
-
     r1 = Rectangle(3, 2)
     print(r1.area())
 

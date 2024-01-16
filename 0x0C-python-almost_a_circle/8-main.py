@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-""" 8-main """
+
+# 8-main.py
+"""
+Main script to demonstrate the usage of Rectangle class with update method
+"""
+
 from models.rectangle import Rectangle
 
 if __name__ == "__main__":
-
     r1 = Rectangle(10, 10, 10, 10)
     print(r1)
 
@@ -18,4 +22,3 @@ if __name__ == "__main__":
 
     r1.update(x=1, height=2, y=3, width=4)
     print(r1)
-
