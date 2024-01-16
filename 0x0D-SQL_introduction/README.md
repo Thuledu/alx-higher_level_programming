@@ -61,7 +61,7 @@ In this project, we began working on relational databases. I started practising 
 **13. Score too low**
   * MySQL script that removes all records with a `score <= 5` in the table `second_table`.
 
-**14. Average
+**14. Average**
   * MySQL script that computes the average `score` of all records in the table `second_table`.
 
 **15. Number by score**
