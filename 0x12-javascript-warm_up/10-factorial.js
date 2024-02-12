@@ -4,22 +4,17 @@
  * @num - The integer to compute the factorial of
  * @returns - The factorial of the given integer
  */
-function computeFactorial(num) {
-	if (isNaN(num)) 
+function factorial(num) {
+	if (num < 0) 
 	{
-		console.log(1);
-		return 1;
+		return (-1);
 	}
 
 	if (num === 0 || num === 1) 
 	{
-		console.log(1);
 		return 1;
 	}
 
-	const factorial = num * computeFactorial(num - 1);
-	console.log(factorial);
-	return factorial;
+	return (num * factorial(num - 1));
 }
-const argument = parseInt(process.argv[2]);
-computeFactorial(argument);
+console.log(factorial(Number(process.argv[2])));
