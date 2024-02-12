@@ -1,4 +1,5 @@
 #!/usr/bin/node
+/* script that prints a message depending of the number of arguments passed */
 const argsCount = process.argv.length - 2;
 
 switch (argsCount) {
