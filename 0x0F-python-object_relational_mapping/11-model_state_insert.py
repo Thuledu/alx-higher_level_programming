@@ -19,12 +19,18 @@ def add_state(username, password, database):
     """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
 
     session = Session()
 
     new_state = State(name='Louisiana')
-    session.add(new_state)
-    session.commit()
 
-    print(new_state.id)
+    session.add(new_state)
+
+    new_instance = session.query(State).filter_by(name='Louisiana').first()
+
+    print(new_instance.id)
+
+    session.commit()
