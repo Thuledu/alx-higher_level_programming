@@ -32,7 +32,7 @@ for state in session.query(State).order_by(State.id).all(): # HERE: no SQL query
 session.close()
 ```
 
-##Learning Objectives
+## Learning Objectives
 
 **General**
 * Why Python programming is awesome
