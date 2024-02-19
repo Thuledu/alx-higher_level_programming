@@ -18,7 +18,7 @@ def create_state_and_city(username, password, database):
     Returns:
     - None
     """
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database, pool_pre_ping=True))
 
     Base.metadata.create_all(engine)
 
@@ -26,6 +26,10 @@ def create_state_and_city(username, password, database):
 
     session = Session()
 
-    california = State(name='California', cities=[City(name='San Francisco')])
-    session.add(california)
+    newState = State(name='California')
+    newCity = City(name='San Francisco')
+    newState.cities.append(newCity)
+
+    session.add(California)
+    session.add(San Francisco)
     session.commit()

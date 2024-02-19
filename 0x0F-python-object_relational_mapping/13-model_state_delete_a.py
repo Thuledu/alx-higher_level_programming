@@ -19,6 +19,8 @@ def delete_states_with_letter_a(username, password, database):
     """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
 
     session = Session()

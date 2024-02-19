@@ -20,10 +20,14 @@ def list_cities(username, password, database):
     """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
     cities = session.query(City).order_by(City.id).all()
 
-    for city in cities:
-        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+    for state in session.query(State).order_by(State.id):
+        for city in state.cities:
+            print(city.id, city.name, sep=": ", end="")
+            print(" -> " + state.name)

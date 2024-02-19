@@ -18,7 +18,9 @@ def change_state_name(username, password, database):
     - None
     """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
-
+    
+    Base.metadata.create_all(engine)
+     
     Session = sessionmaker(bind=engine)
 
     session = Session()
@@ -27,6 +29,3 @@ def change_state_name(username, password, database):
     if state:
         state.name = "New Mexico"
         session.commit()
-        print(state.id)
-    else:
-        print("Not found")

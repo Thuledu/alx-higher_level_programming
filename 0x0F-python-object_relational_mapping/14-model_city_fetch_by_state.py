@@ -20,6 +20,8 @@ def fetch_cities_by_state(username, password, database):
     """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(username, password, database))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
 
     session = Session()
