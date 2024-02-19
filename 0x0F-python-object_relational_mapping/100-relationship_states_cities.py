@@ -30,6 +30,6 @@ def create_state_and_city(username, password, database):
     newCity = City(name='San Francisco')
     newState.cities.append(newCity)
 
-    session.add(California)
-    session.add(San Francisco)
+    session.add(newState)
+    session.add(newCity)
     session.commit()
