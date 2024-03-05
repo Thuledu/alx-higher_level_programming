@@ -5,8 +5,6 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-# Send a request to the URL and get the size of the response body in bytes
-response_size=$(curl -sI "$1" | awk '/Content-Length/ {print $2}' | tr -d '\r')
+response_size=$(curl -sI "$1" | awk '/Content-Length/ {print $2}' | tr -d '\r' | cut -d " " -f2 )
 
-# Display the size of the response body in bytes
 echo "$response_size bytes"
